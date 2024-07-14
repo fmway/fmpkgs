@@ -1,10 +1,13 @@
-(import
-  (
-    let lock = builtins.fromJSON (builtins.readFile ./flake.lock); in
-    fetchTarball {
-      url = lock.nodes.flake-compat.locked.url or "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
-      sha256 = lock.nodes.flake-compat.locked.narHash;
-    }
-  )
-  { src = ./.; }
-).defaultNix
+{ pkgs ? import <nixpkgs> {}
+ , lib
+ , ...
+}: let
+  getDefaultNixs = folder: let
+    filtered = key: value: value == "directory" && lib.pathExists (lib.path.append folder "${key}/default.nix"); # get directory that have children default.nix
+    list-dir = builtins.readDir folder;
+  in lib.mapAttrsToList (name: value: "${name}") (lib.filterAttrs filtered list-dir); 
+  folder = ./.;
+  list = getDefaultNixs folder;
+in builtins.foldl' (all: package: {
+  "${package}" = pkgs.callPackage (folder + ("/" + package)) { };
+} // all) {} list
