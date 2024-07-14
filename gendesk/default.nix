@@ -22,7 +22,7 @@ buildGoModule rec {
     description = "Herb: Generate .desktop files and download .png icons by specifying a minimum of information";
     homepage = "https://github.com/xyproto/gendesk";
     license = licenses.mit;
-    maintainers = with maintainers; [ ];
+    # maintainers = with maintainers; [ ];
     mainProgram = "gendesk";
   };
 }

@@ -17,7 +17,7 @@ let
 in 
 appimageTools.wrapType2 {
   inherit pname version src;
-  extraPkgs = pkgs: with pkgs; [ ];
+  # extraPkgs = pkgs: with pkgs; [ ];
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/bstudio.desktop $out/share/applications/bstudio.desktop
     install -m 444 -D ${appimageContents}/bstudio.png \

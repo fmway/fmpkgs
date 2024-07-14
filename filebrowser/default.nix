@@ -1,17 +1,18 @@
 { buildGoModule, buildNpmPackage, fetchFromGitHub, lib }:
 
 let
-  frontend = buildNpmPackage rec {
-    
-    pname = "filebrowser";
-    version = "2.30.0";
+  pname = "filebrowser";
+  version = "2.30.0";
 
-    src = fetchFromGitHub {
-      owner = "filebrowser";
-      repo = "filebrowser";
-      rev = "v${version}";
-      hash = "sha256-2w2oDp+gJZIrdh5wkvnMIUKMlMgAmYpmXSpjUiGJ1kM=";
-    };
+  src = fetchFromGitHub {
+    owner = "filebrowser";
+    repo = "filebrowser";
+    rev = "v${version}";
+    hash = "sha256-2w2oDp+gJZIrdh5wkvnMIUKMlMgAmYpmXSpjUiGJ1kM=";
+  };
+
+  frontend = buildNpmPackage {
+    inherit pname version src; 
 
     sourceRoot = "${src.name}/frontend";
 
@@ -29,16 +30,8 @@ let
     '';
   };
 in
-buildGoModule rec {
-  pname = "filebrowser";
-  version = "2.30.0";
-
-  src = fetchFromGitHub {
-    owner = "filebrowser";
-    repo = "filebrowser";
-    rev = "v${version}";
-    hash = "sha256-2w2oDp+gJZIrdh5wkvnMIUKMlMgAmYpmXSpjUiGJ1kM=";
-  };
+buildGoModule {
+  inherit pname version src;
 
   vendorHash = "sha256-D8Z3Byo2JHIV1JA6TbhPxd9Uo5P9RppkDV6sh7Gaypo="; 
   

@@ -5,7 +5,7 @@
 , callPackage
 }: let
   gendesk = callPackage ../gendesk { };
-  xdm-app = callPackage ./xdm-app { };
+  # xdm-app = callPackage ./xdm-app { };
   xdm-gtk = callPackage ./xdm-gtk { };
 in stdenv.mkDerivation rec {
   pname = "xdman";
@@ -37,7 +37,7 @@ in stdenv.mkDerivation rec {
     description = "Powerfull download accelerator and video downloader";
     homepage = "https://github.com/subhra74/xdm";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [ ];
+    # maintainers = with maintainers; [ ];
     mainProgram = "xdman";
     platforms = platforms.all;
   };

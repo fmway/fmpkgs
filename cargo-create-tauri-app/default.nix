@@ -16,12 +16,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-3Ep8wZzhHoC5iqXtZmzKKcFkdrK7SLKOOOTBk0l1dus=";
 
-  meta = with lib; {
+  meta = {
     description = "Rapidly scaffold out a new tauri app project";
     homepage = "https://github.com/tauri-apps/create-tauri-app";
     changelog = "https://github.com/tauri-apps/create-tauri-app/blob/${src.rev}/CHANGELOG.md";
-    license = with licenses; [ asl20 mit ];
-    maintainers = with maintainers; [ ];
+    license = with lib.licenses; [ asl20 mit ];
     mainProgram = "create-tauri-app";
   };
 }

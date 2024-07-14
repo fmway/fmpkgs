@@ -60,7 +60,7 @@ stdenv.mkDerivation rec {
     description = "Practice your typing skills";
     homepage = "https://github.com/bragefuglseth/keypunch";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [ ];
+    # maintainers = with maintainers; [ ];
     mainProgram = "keypunch";
     platforms = platforms.all;
   };
