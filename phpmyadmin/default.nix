@@ -10,7 +10,7 @@
     url = "https://files.phpmyadmin.net/phpMyAdmin/${version}/phpMyAdmin-${version}-all-languages.zip";
     hash = "sha256-KGW5qVFJrdqPkPujfPSWnQZOhx9zGPbB0hJxq2qb2dM=";
   };
-  config = writeText "config.inc.php" (builtins.readFile ./config.inc.php);
+  config = ./config.inc.php;
 in stdenv.mkDerivation {
   inherit pname version src;
 
