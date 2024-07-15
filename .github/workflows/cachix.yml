@@ -15,8 +15,8 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: |
-        nix build .#cargo-create-tauri-app .#cargo-tauri
+    - run: nix build .#cargo-create-tauri-app .#cargo-tauri
+    - run: nix-collect-garbage -d
   misc:
     runs-on: ubuntu-latest
     steps:
@@ -29,8 +29,8 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: |
-       nix build .#filebrowser .#phpmyadmin --verbose 
+    - run: nix build .#filebrowser .#phpmyadmin --verbose 
+    - run: nix-collect-garbage -d
   appimage:
     runs-on: ubuntu-latest
     steps:
@@ -57,5 +57,5 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: |
-        nix build ./#xdman --verbose
+    - run: nix build ./#xdman --verbose
+    - run: nix-collect-garbage -d
