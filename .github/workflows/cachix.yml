@@ -2,7 +2,7 @@ name: "cachix"
 on:
   pull_request:
   push: 
-permission:
+permissions:
   contents: write
 jobs:
   rust-cli:
