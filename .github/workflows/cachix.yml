@@ -60,8 +60,8 @@ jobs:
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: |
-      nix build .#xdman.passthru.fetch-deps --verbose # update nuget deps
-      ls ./xdman
-      cat ./xdman/xdm-gtk/deps.nix
+        nix build .#xdman.passthru.fetch-deps --verbose # update nuget deps
+        ls ./xdman
+        cat ./xdman/xdm-gtk/deps.nix
     - run: nix build .#xdman --verbose
     - run: nix-collect-garbage -d
