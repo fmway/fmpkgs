@@ -1,7 +1,9 @@
 name: "cachix"
 on:
   pull_request:
-  push:
+  push: 
+permission:
+  contents: write
 jobs:
   rust-cli:
     runs-on: ubuntu-latest
@@ -46,9 +48,17 @@ jobs:
     - run: |
         nix build .#keypunch .#bootstrap-studio .#popsql --verbose
   xdman:
+    if: github.event.commits[0].author.name != 'Bot'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Setup git
+      run: |
+        git config --global user.name 'Bot'
+        git config --global user.email 'fm18lv@gmail.com'
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
     - uses: cachix/install-nix-action@v25
       with:
         nix_path: nixpkgs=channel:nixos-unstable
@@ -59,7 +69,13 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#xdman.passthru.fetch-deps --verbose # update nuget deps
-    - run: ./result
+    - name: Update Nuget deps 
+      run: nix build .#xdman.passthru.fetch-deps --verbose # update nuget deps
+    - run: |
+        ./result ./xdman/xdm-gtk/deps.nix
+        unlink result
+    - name: Commit
+      run: |
+        git commit -A && git commit -m "Updated deps xdman" && git push || echo "Nothing..."
     - run: nix build .#xdman --verbose
     - run: nix-collect-garbage -d
