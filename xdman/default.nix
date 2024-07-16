@@ -10,6 +10,7 @@
 in stdenv.mkDerivation rec {
   pname = "xdman";
   version = "8.0.29";
+  inherit (xdm-gtk) passthru;
 
   src = ./.;
 
