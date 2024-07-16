@@ -1,3 +1,3 @@
-<!-- Sel 16 Jul 2024 12:54:39 WIB -->
+<!-- Sel 16 Jul 2024 14:46:20 WIB -->
 # fmpkgs
 My Awkward nix package
