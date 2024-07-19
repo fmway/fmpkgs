@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> {}
- , lib
+ , lib ? pkgs.lib
  , ...
 }: let
   getDefaultNixs = folder: let

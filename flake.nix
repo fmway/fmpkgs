@@ -13,5 +13,7 @@
     packages = import ./. {
       inherit pkgs lib;
     };
-  });
+  }) // {
+    overlays.default = import ./overlay.nix;
+  };
 }
