@@ -31,7 +31,7 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#filebrowser .#phpmyadmin .#firefox-gnome-theme --verbose 
+    - run: nix build .#filebrowser .#phpmyadmin .#firefox-gnome-theme .#mpv-multiloop --verbose 
     - run: nix-collect-garbage -d
   appimage:
     runs-on: ubuntu-latest
