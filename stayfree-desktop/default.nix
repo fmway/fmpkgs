@@ -18,7 +18,8 @@ appimageTools.wrapType2 {
   inherit pname version src;
   extraPkgs = pkgs: with pkgs; [ ];
   extraInstallCommands = ''
+    mkdir -p $out/share/icons/hicolor/512x512/apps
     install -m 444 -D ${appimageContents}/${pname}.desktop $out/share/applications/${pname}.desktop
-    cp -r ${appimageContents}/usr/share $out
+    cp ${appimageContents}/${pname}.png $out/share/icons/hicolor/512x512/apps/${pname}.png
   '';
 }
