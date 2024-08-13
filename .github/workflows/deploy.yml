@@ -31,9 +31,9 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#filebrowser .#phpmyadmin .#firefox-gnome-theme .#mpv-multiloop --verbose 
+    - run: nix build .#filebrowser .#mpv-multiloop --verbose 
     - run: nix-collect-garbage -d
-  appimage:
+  keypunch:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -46,7 +46,7 @@ jobs:
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: |
-        nix build .#keypunch .#bootstrap-studio .#popsql --verbose
+        nix build .#keypunch --verbose
   xdman:
     if: github.event.commits[0].author.name != 'Bot'
     runs-on: ubuntu-latest
