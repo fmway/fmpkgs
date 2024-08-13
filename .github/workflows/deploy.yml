@@ -17,7 +17,7 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#cargo-create-tauri-app .#cargo-tauri .#blue-tui
+    - run: nix build .#cargo-create-tauri-app .#cargo-tauri .#bluetui
     - run: nix-collect-garbage -d
   misc:
     runs-on: ubuntu-latest
