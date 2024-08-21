@@ -10,4 +10,8 @@
   list = getDefaultNixs folder;
 in builtins.foldl' (all: package: {
   "${package}" = pkgs.callPackage (folder + ("/" + package)) { };
-} // all) {} list
+} // all) {
+  firefoxAddons = import ./firefoxAddons.nix {
+    inherit pkgs lib;
+  };
+} list
