@@ -99,4 +99,92 @@ in {
       platforms = lib.platforms.all;
     };
   };
+  allow-right-click = buildFirefoxXpiAddon rec {
+    pname = "re_enable_right_click";
+    version = "5.6.2";
+    addonId = "{278b0ae0-da9d-4cc6-be81-5aa7f3202672}";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4300505/${pname}-0.${version}.xpi";
+    hash = "sha256-yUii5G1y0n0DMjqksqntiO6wDIPITUv3kGOoVO07qgA=";
+    meta = {
+      homepage = "https://webextension.org/listing/allow-right-click.html";
+      description = "Re-enable the possibility to use the context menu, copy, paste, and text selection on sites that prevent them";
+      mozPermissions = [
+        "storage"
+        "activeTab"
+        "contextMenus"
+        "notifications"
+        "webNavigation"
+        "*://*/*"
+      ];
+      licenses = [];
+      platforms = lib.platforms.all;
+    };
+  };
+  firefoxpwa = buildFirefoxXpiAddon rec {
+    pname = "pwas_for_firefox";
+    version = "2.12.1";
+    addonId = "firefoxpwa@filips.si";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4293028/${pname}-${version}.xpi";
+    hash = "sha256-m8BCAlQt37RxVnWw+2hIPnmofTicNa5OWkwXp/IXdWY=";
+    meta = {
+      homepage = "https://pwasforfirefox.filips.si/";
+      description = "A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox";
+      mozPermissions = [
+        "nativeMessaging"
+        "notifications"
+        "storage"
+        "http://*/*"
+        "https://*/*"
+        "webNavigation"
+        "webRequest"
+        "webRequestBlocking"
+      ];
+      licenses = [];
+      platforms = lib.platforms.all;
+    };
+  };
+  xdm = buildFirefoxXpiAddon rec {
+    pname = "xdm_integration_module";
+    version = "1.3";
+    addonId = "xdm-integration-module@subhra74.github.io";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4044567/${pname}-${version}.xpi";
+    hash = "sha256-zdk/npeagq4vTPHsFlQI+yqvV1li16QaL7rLRiRDK24=";
+    meta = {
+      homepage = "";
+      description = "Download files with XDM application";
+      mozPermissions = [
+        "nativeMessaging"
+        "cookies"
+        "downloads"
+        "tabs"
+        "webRequest"
+        "<all_urls>"
+      ];
+      licenses = [];
+      platforms = lib.platforms.all;
+    };
+  };
+  xdm_v8 = buildFirefoxXpiAddon rec {
+    pname = "xdm_browser_monitor_v8";
+    version = "3.4";
+    addonId = "xdm-v8-browser-helper@subhra74.github.io";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4095144/${pname}-${version}.xpi";
+    hash = "sha256-+3A6wX3COWADiahpU/v2PfbTEoCndFFHwRy6ky0WV8k=";
+    meta = {
+      homepage = "";
+      description = "Download files with XDM v8+";
+      mozPermissions = [
+        "tabs"
+        "cookies"
+        "contextMenus"
+        "menus"
+        "activeTab"
+        "webRequest"
+        "webRequestBlocking"
+        "<all_urls>"
+      ];
+      licenses = [];
+      platforms = lib.platforms.all;
+    };
+  };
 }
