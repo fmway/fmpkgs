@@ -1,8 +1,7 @@
 { lib
-, stdenvNoCC
 , fetchFromGitHub
 , unstableGitUpdater
-, buildLua ? import ./buildLua.nix { inherit lib stdenvNoCC; }
+, buildLua
 }:
 buildLua {
   pname = "mpv-multiloop";
@@ -15,13 +14,13 @@ buildLua {
   };
 
   passthru.updateScript = unstableGitUpdater { };
+  passthru.scriptName = "mpv-menu.lua";
 
   meta = with lib; {
     description = "Loop over multiple A-B points in mpv";
     homepage = "https://github.com/unusualpepe/mpv-multiloop";
     license = with licenses; [ mit gpl3Only ];
     maintainers = with maintainers; [ ];
-    mainProgram = "mpv-multiloop";
     platforms = platforms.all;
   };
 }

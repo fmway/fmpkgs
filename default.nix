@@ -10,9 +10,12 @@ in {
   filebrowser = callPackage ./filebrowser {};
   firefoxAddons = import ./firefoxAddons { inherit pkgs lib; };
   keypunch = callPackage ./keypunch {};
-  mpv-scripts = {
-    multiloop = callPackage ./mpv-scripts/multiloop.nix {};
-    
+  mpv-scripts = let
+    buildLua = import ./mpv-scripts/buildLua.nix;
+  in {
+    multiloop = callPackage ./mpv-scripts/multiloop.nix { inherit buildLua; };
+    menu = callPackage ./mpv-scripts/menu.nix { inherit buildLua; };
+    borkmarker = callPackage ./mpv-scripts/borkmarker.nix { inherit buildLua; };
   };
   xdman = callPackage ./xdman {};
 }
