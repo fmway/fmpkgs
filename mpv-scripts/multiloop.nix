@@ -14,7 +14,7 @@ buildLua {
   };
 
   passthru.updateScript = unstableGitUpdater { };
-  passthru.scriptName = "mpv-multiloop.lua";
+  passthru.scriptName = "multiloop.lua";
 
   meta = with lib; {
     description = "Loop over multiple A-B points in mpv";
