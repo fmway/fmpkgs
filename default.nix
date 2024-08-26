@@ -2,16 +2,17 @@
  , lib ? pkgs.lib
  , ...
 }: let
-  getDefaultNixs = folder: let
-    filtered = key: value: value == "directory" && lib.pathExists (lib.path.append folder "${key}/default.nix"); # get directory that have children default.nix
-    list-dir = builtins.readDir folder;
-  in lib.mapAttrsToList (name: value: "${name}") (lib.filterAttrs filtered list-dir); 
-  folder = ./.;
-  list = getDefaultNixs folder;
-in builtins.foldl' (all: package: {
-  "${package}" = pkgs.callPackage (folder + ("/" + package)) { };
-} // all) {
-  firefoxAddons = import ./firefoxAddons.nix {
-    inherit pkgs lib;
+  inherit (pkgs) callPackage;
+in {
+  bluetui = callPackage ./bluetui {};
+  cargo-tauri = callPackage ./cargo-tauri {};
+  cargo-create-tauri-app = callPackage ./cargo-create-tauri-app {};
+  filebrowser = callPackage ./filebrowser {};
+  firefoxAddons = import ./firefoxAddons { inherit pkgs lib; };
+  keypunch = callPackage ./keypunch {};
+  mpv-scripts = {
+    multiloop = callPackage ./mpv-scripts/multiloop.nix {};
+    
   };
-} list
+  xdman = callPackage ./xdman {};
+}
