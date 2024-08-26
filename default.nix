@@ -15,7 +15,7 @@ in {
   in {
     multiloop = callPackage ./mpv-scripts/multiloop.nix { inherit buildLua; };
     menu = callPackage ./mpv-scripts/menu.nix { inherit buildLua; };
-    borkmarker = callPackage ./mpv-scripts/borkmarker.nix { inherit buildLua; };
+    bookmarker = callPackage ./mpv-scripts/bookmarker.nix { inherit buildLua; };
   };
   xdman = callPackage ./xdman {};
 }
