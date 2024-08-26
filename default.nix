@@ -11,7 +11,7 @@ in {
   firefoxAddons = import ./firefoxAddons { inherit pkgs lib; };
   keypunch = callPackage ./keypunch {};
   mpv-scripts = let
-    buildLua = import ./mpv-scripts/buildLua.nix;
+    buildLua = import ./mpv-scripts/buildLua.nix { inherit pkgs lib; };
   in {
     multiloop = callPackage ./mpv-scripts/multiloop.nix { inherit buildLua; };
     menu = callPackage ./mpv-scripts/menu.nix { inherit buildLua; };

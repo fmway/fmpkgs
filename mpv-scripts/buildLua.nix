@@ -1,4 +1,4 @@
-{ lib, stdenvNoCC }:
+{ lib, pkgs, ... }:
 
 let
   # Escape strings for embedding in shell scripts
@@ -7,6 +7,8 @@ let
 
   fileName = pathStr: lib.last (lib.splitString "/" pathStr);
   scriptsDir = "$out/share/mpv/scripts";
+
+  inherit (pkgs) stdenvNoCC;
 
   # similar to `lib.extends`, but with inverted precedence and recursive update
   extendedBy =
