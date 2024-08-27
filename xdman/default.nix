@@ -4,7 +4,7 @@
 , binutils
 , callPackage
 }: let
-  gendesk = callPackage ../gendesk { };
+  gendesk = callPackage ./gendesk { };
   # xdm-app = callPackage ./xdm-app { };
   xdm-gtk = callPackage ./xdm-gtk { };
 in stdenv.mkDerivation rec {

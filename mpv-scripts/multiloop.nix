@@ -5,7 +5,7 @@
 }:
 buildLua {
   pname = "mpv-multiloop";
-  version = "unstable-2020-11-29";
+  version = "0.0.0";
   src = fetchFromGitHub {
     owner = "unusualpepe";
     repo = "mpv-multiloop";

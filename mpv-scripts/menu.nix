@@ -5,7 +5,7 @@
 }:
 buildLua rec {
   pname = "menu";
-  version = "unstable-2020-05-09";
+  version = "0.0.0";
 
   src = fetchFromGitHub {
     owner = "jonniek";
