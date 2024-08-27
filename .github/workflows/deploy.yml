@@ -17,36 +17,8 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#cargo-create-tauri-app .#cargo-tauri .#bluetui
+    - run: nix build .#bluetui
     - run: nix-collect-garbage -d
-  misc:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@v25
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    - uses: cachix/cachix-action@v14
-      with:
-        name: fmcachix
-        # If you chose API tokens for write access OR if you have a private cache
-        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#filebrowser .#mpv-multiloop --verbose 
-    - run: nix-collect-garbage -d
-  keypunch:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@v25
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    - uses: cachix/cachix-action@v14
-      with:
-        name: fmcachix
-        # If you chose API tokens for write access OR if you have a private cache
-        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: |
-        nix build .#keypunch --verbose
   xdman:
     if: github.event.commits[0].author.name != 'Bot'
     runs-on: ubuntu-latest
