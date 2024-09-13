@@ -1,12 +1,12 @@
 { pkgs, lib, ... }:
 lib.makeOverridable ({ stdenv ? pkgs.stdenv
-  , fetchurl ? pkgs.fetchurl, pname, version, addonId, url, hash, meta, ...
+  , fetchurl ? pkgs.fetchurl, pname, version, addonId, url, sha256, meta, ...
 }: stdenv.mkDerivation {
   name = "${pname}-${version}";
 
   inherit meta;
 
-  src = fetchurl { inherit url hash; };
+  src = fetchurl { inherit url sha256; };
 
   preferLocalBuild = true;
   allowSubstitutes = true;

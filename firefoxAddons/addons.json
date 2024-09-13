@@ -1,0 +1,35 @@
+[
+  {
+    "name": "what-font",
+    "slug": "zjm-whatfont"
+  },
+  {
+    "name": "wakatime",
+    "slug": "wakatimes"
+  },
+  {
+    "name": "stayfree"
+  },
+  {
+    "name": "firefox-relay"
+  },
+  {
+    "name": "preact-devtools"
+  },
+  {
+    "name": "allow-right-click",
+    "query": "allow+right+click"
+  },
+  {
+    "name": "firefoxpwa",
+    "query": "progressive+web+apps+for+firefox"
+  },
+  {
+    "name": "xdm",
+    "slug": "xdm-integration-module"
+  },
+  {
+    "name": "xdm_v8",
+    "slug": "xdm-browser-monitor-v8"
+  }
+]
