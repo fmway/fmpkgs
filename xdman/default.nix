@@ -4,6 +4,7 @@
 , binutils
 , callPackage
 , makeDesktopItem
+, copyDesktopItems
 }: let
   # xdm-app = callPackage ./xdm-app { };
   xdm-gtk = callPackage ./xdm-gtk { };
@@ -17,6 +18,10 @@ in stdenv.mkDerivation rec {
   buildInputs = [
     binutils.bintools
     coreutils
+  ];
+
+  nativeBuildInputs = [
+    copyDesktopItems
   ];
 
   desktopItems = [
