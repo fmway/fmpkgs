@@ -46,7 +46,6 @@ in stdenv.mkDerivation rec {
     install -m 644 ${xdm-gtk}/lib/xdm-gtk/xdm-logo-512.png $out/share/icons/hicolor/512x512/apps/xdm-app.png
     install -m 644 ${xdm-gtk}/lib/xdm-gtk/xdm-logo.svg $out/share/icons/hicolor/scalable/apps/xdm-logo.svg
     install -m 644 ${xdm-gtk}/lib/xdm-gtk/xdm-logo.svg $out/share/icons/hicolor/scalable/apps/xdm-app.svg
-    install -m 644 ${pname}.desktop $out/share/applications/
 
     runHook postInstall
   '';
