@@ -5,7 +5,7 @@
   inherit (pkgs) callPackage;
 in {
   bluetui = callPackage ./bluetui {};
-  firefoxAddons = import ./firefoxAddons { inherit pkgs lib; };
+  firefox-addons = import ./firefox-addons { inherit pkgs lib; };
   mpv-scripts = let
     buildLua = import ./mpv-scripts/buildLua.nix { inherit pkgs lib; };
   in {
