@@ -3,8 +3,8 @@
 , coreutils
 , binutils
 , callPackage
+, makeDesktopItem
 }: let
-  gendesk = callPackage ./gendesk { };
   # xdm-app = callPackage ./xdm-app { };
   xdm-gtk = callPackage ./xdm-gtk { };
 in stdenv.mkDerivation rec {
@@ -15,14 +15,22 @@ in stdenv.mkDerivation rec {
   src = ./.;
 
   buildInputs = [
-    gendesk
     binutils.bintools
     coreutils
   ];
 
-  buildPhase = ''
-    gendesk -f -n --name='Xtreme Download Manager' --comment="${meta.description}" --custom='Keywords=download;internet;manager;' --exec=$out/bin/xdman --icon=xdm-app --terminal=false --categories='Network' --startupnotify=false --pkgname=${pname}
-      '';
+  desktopItems = [
+    (makeDesktopItem rec {
+      name = "Xtreme Download Manager";
+      desktopName = name;
+      comment = meta.description;
+      exec = pname;
+      icon = "xdm-app";
+      categories = [ "Utility" "Internet" ];
+      keywords = [ "download" "internet" "manager" ];
+      startupNotify = false;
+    })
+  ];
 
   installPhase = ''
     mkdir -p $out/share/applications $out/bin $out/share/icons/hicolor/512x512/apps/ $out/share/icons/hicolor/scalable/apps
