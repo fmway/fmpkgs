@@ -38,6 +38,8 @@ in stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
+    runHook preInstall
+
     mkdir -p $out/share/applications $out/bin $out/share/icons/hicolor/512x512/apps/ $out/share/icons/hicolor/scalable/apps
     ln -sv ${xdm-gtk}/bin/xdm-app $out/bin/${pname}
     install -m 644 ${xdm-gtk}/lib/xdm-gtk/xdm-logo-512.png $out/share/icons/hicolor/512x512/apps/xdm-logo.png
@@ -45,6 +47,8 @@ in stdenv.mkDerivation rec {
     install -m 644 ${xdm-gtk}/lib/xdm-gtk/xdm-logo.svg $out/share/icons/hicolor/scalable/apps/xdm-logo.svg
     install -m 644 ${xdm-gtk}/lib/xdm-gtk/xdm-logo.svg $out/share/icons/hicolor/scalable/apps/xdm-app.svg
     install -m 644 ${pname}.desktop $out/share/applications/
+
+    runHook postInstall
   '';
 
   meta = with lib; {
