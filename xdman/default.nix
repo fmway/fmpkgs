@@ -31,7 +31,7 @@ in stdenv.mkDerivation rec {
       comment = meta.description;
       exec = pname;
       icon = "xdm-app";
-      categories = [ "Utility" "Internet" ];
+      categories = [ "Utility" ];
       keywords = [ "download" "internet" "manager" ];
       startupNotify = false;
     })
