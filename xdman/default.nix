@@ -33,6 +33,7 @@ in stdenv.mkDerivation rec {
       icon = "xdm-app";
       categories = [ "Utility" ];
       keywords = [ "download" "internet" "manager" ];
+      startupWMClass = "xdm-app";
       startupNotify = false;
     })
   ];
