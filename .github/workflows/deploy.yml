@@ -44,7 +44,7 @@ jobs:
     - name: Update Nuget deps 
       run: nix build .#xdman.passthru.fetch-deps --verbose # update nuget deps
     - run: |
-        ./result ./xdman/xdm-gtk/deps.nix
+        ./result $PWD/xdman/xdm-gtk/deps.nix
         unlink result
     - name: Commit
       run: |
