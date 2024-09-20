@@ -42,9 +42,11 @@ jobs:
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - name: Update Nuget deps 
-      run: nix build .#xdman.passthru.fetch-deps --verbose # update nuget deps
+      run: |
+        echo $PWD
+        nix build .#xdman.passthru.fetch-deps --verbose # update nuget deps
     - run: |
-        ./result $PWD/xdman/xdm-gtk/deps.nix
+        ./result xdman/xdm-gtk/deps.nix
         unlink result
     - name: Commit
       run: |
