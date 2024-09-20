@@ -138,10 +138,10 @@ in {
   };
  firefoxpwa = buildFirefoxXpiAddon {
     pname = "firefoxpwa";
-    version = "2.12.3";
+    version = "2.12.4";
     addonId = "firefoxpwa@filips.si";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4350177/pwas_for_firefox-2.12.3.xpi";
-    sha256 = "71ac6fd32740cf6bbaf8a1ba24b6b8b6d68e291b0d750ce3dabb8aa009d5c12a";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4353516/pwas_for_firefox-2.12.4.xpi";
+    sha256 = "44f9c0d9d9dc820f3887261ffa01a4b69fb41e19099053513ee5a5818b248f02";
     meta = {
       homepage = "https://github.com/filips123/PWAsForFirefox";
       mozPermissions = [
