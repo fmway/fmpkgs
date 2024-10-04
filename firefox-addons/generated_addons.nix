@@ -24,19 +24,19 @@ in {
   };
  wakatime = buildFirefoxXpiAddon {
     pname = "wakatimes";
-    version = "3.0.22";
+    version = "4.0.2";
     addonId = "addons@wakatime.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4222179/wakatimes-3.0.22.xpi";
-    sha256 = "a64f6c6abdb39322ac26669fe698c66457758c42ceca7110fc019afaaaafb925";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4363361/wakatimes-4.0.2.xpi";
+    sha256 = "bf65281bc459e31be2f271bc5eebac58212a5d5cd070d78ef664e320d62f40d0";
     meta = {
       homepage = "https://wakatime.com";
       mozPermissions = [
-        "<all_urls>"
         "alarms"
         "tabs"
         "storage"
-        "idle"
+        "activeTab"
         "devtools"
+        "<all_urls>"
       ];
       # todo
       licenses = with lib.licenses; [];
@@ -45,10 +45,10 @@ in {
   };
  stayfree = buildFirefoxXpiAddon {
     pname = "stayfree";
-    version = "1.42.0";
+    version = "1.42.5";
     addonId = "{30b15d56-b2fa-4cb2-98fd-7b5e26306483}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4349725/stayfree-1.42.0.xpi";
-    sha256 = "7b25f70572605321488c4d90b67f6772a514a5a2dcf8e63918849f274be6005a";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4359462/stayfree-1.42.5.xpi";
+    sha256 = "e446ca374a9450074651f4c8c3dfec9e853b91e2710b2f510931551c687e66cf";
     meta = {
       homepage = "https://stayfreeapps.com/";
       mozPermissions = [
@@ -138,10 +138,10 @@ in {
   };
  firefoxpwa = buildFirefoxXpiAddon {
     pname = "firefoxpwa";
-    version = "2.12.4";
+    version = "2.12.5";
     addonId = "firefoxpwa@filips.si";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4353516/pwas_for_firefox-2.12.4.xpi";
-    sha256 = "44f9c0d9d9dc820f3887261ffa01a4b69fb41e19099053513ee5a5818b248f02";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4360044/pwas_for_firefox-2.12.5.xpi";
+    sha256 = "cc8caf700222fc062795bde1081a14395e55b1b6a50a4519c8741d74346b6b11";
     meta = {
       homepage = "https://github.com/filips123/PWAsForFirefox";
       mozPermissions = [
