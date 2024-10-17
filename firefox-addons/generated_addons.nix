@@ -24,10 +24,10 @@ in {
   };
  wakatime = buildFirefoxXpiAddon {
     pname = "wakatimes";
-    version = "4.0.2";
+    version = "4.0.9";
     addonId = "addons@wakatime.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4363361/wakatimes-4.0.2.xpi";
-    sha256 = "bf65281bc459e31be2f271bc5eebac58212a5d5cd070d78ef664e320d62f40d0";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4369526/wakatimes-4.0.9.xpi";
+    sha256 = "e0e7eb918ac91cdad624e5cc63b3bc11da2458a8422d514cc7015eeff0b1a93d";
     meta = {
       homepage = "https://wakatime.com";
       mozPermissions = [
@@ -45,10 +45,10 @@ in {
   };
  stayfree = buildFirefoxXpiAddon {
     pname = "stayfree";
-    version = "1.42.5";
+    version = "1.42.4";
     addonId = "{30b15d56-b2fa-4cb2-98fd-7b5e26306483}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4359462/stayfree-1.42.5.xpi";
-    sha256 = "e446ca374a9450074651f4c8c3dfec9e853b91e2710b2f510931551c687e66cf";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4358939/stayfree-1.42.4.xpi";
+    sha256 = "aebbccc0ace8b87ed1d99c5e9b63fadb72edf0487c47270d4df6f017bb3d8077";
     meta = {
       homepage = "https://stayfreeapps.com/";
       mozPermissions = [
