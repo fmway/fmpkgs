@@ -5,6 +5,7 @@
 , callPackage
 , makeDesktopItem
 , copyDesktopItems
+, wrapGAppsHook
 }: let
   # xdm-app = callPackage ./xdm-app { };
   xdm-gtk = callPackage ./xdm-gtk { };
@@ -22,6 +23,7 @@ in stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     copyDesktopItems
+    wrapGAppsHook
   ];
 
   desktopItems = [
