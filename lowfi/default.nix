@@ -9,14 +9,14 @@
 , withMpris ? true
 , ... }:
 
-rustPlatform.buildRustPackage (final: {
+rustPlatform.buildRustPackage rec {
   pname = "lowfi";
   version = "1.5.3";
 
   src = fetchFromGitHub {
     owner = "talwat";
     repo = "lowfi";
-    rev = final.version;
+    rev = version;
     hash = "sha256-pfvTOoWsXukZTfev9+Ifcp3YYIqtYZgmEVPHuqD4IsM=";
   };
 
@@ -45,4 +45,4 @@ rustPlatform.buildRustPackage (final: {
     maintainers = with lib.maintainers; [ ];
     mainProgram = "lowfi";
   };
-})
+}
