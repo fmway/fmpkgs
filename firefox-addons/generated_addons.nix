@@ -124,7 +124,7 @@ in {
     url = "https://addons.mozilla.org/firefox/downloads/file/4300505/re_enable_right_click-0.5.6.2.xpi";
     sha256 = "c948a2e46d72d27d03323aa4b2a9ed88eeb00c83c84d4bf79063a854ed3baa00";
     meta = {
-      homepage = "http://add0n.com/allow-right-click.html";
+      homepage = "https://webextension.org/listing/allow-right-click.html";
       mozPermissions = [
         "storage"
         "activeTab"
