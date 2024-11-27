@@ -3,7 +3,8 @@
 , buildDotnetModule
 , gtk3
 , ffmpeg
-}:
+, dotnetCorePackages
+, ... }:
 buildDotnetModule rec {
   pname = "xdm-gtk";
   version = "8.0.29";
@@ -14,6 +15,9 @@ buildDotnetModule rec {
     rev = version;
     hash = "sha256-bdDiTwqsid+I2rsEYqcEOpvL9W3CwgAY0D1R837smdg=";
   };
+
+  dotnet-sdk = dotnetCorePackages.sdk_6_0;
+  dotnet-runtime = dotnetCorePackages.runtime_6_0;
 
   projectFile = "./app/XDM/XDM.Gtk.UI/XDM.Gtk.UI.csproj";
   
