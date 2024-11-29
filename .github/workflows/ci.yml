@@ -2,7 +2,7 @@ name: "CI"
 on:
   pull_request:
   push:
-    branch: [master]
+    branch: [master nightly-update]
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 2,5' # every Tuesday & Friday
