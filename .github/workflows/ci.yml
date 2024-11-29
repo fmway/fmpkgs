@@ -70,9 +70,14 @@ jobs:
     - uses: DeterminateSystems/update-flake-lock@v24
       name: Update flake.lock
       with:
+        branch: nightly-update
         token: ${{ secrets.GITHUB_TOKEN }}
         git-author-name: 'little fmway'
         git-author-email: 'fm18lv@gmail.com'
         git-committer-name: 'little fmway'
         git-committer-email: 'fm18lv@gmail.com'
         commit-msg: 'chore(lockfile): update flake.lock'
+        pr-title: 'chore(lockfile): update flake.lock'
+        pr-labels: |
+          dependencies
+          automated
