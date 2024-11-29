@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GH_TOKEN }}
         extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - uses: cachix/cachix-action@master
@@ -40,7 +40,7 @@ jobs:
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
     - uses: DeterminateSystems/nix-installer-action@main
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GH_TOKEN }}
         extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - uses: cachix/cachix-action@master
@@ -66,13 +66,13 @@ jobs:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GH_TOKEN }}
         extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/update-flake-lock@v24
       name: Update flake.lock
       with:
         branch: nightly-update
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
         git-author-name: 'little fmway'
         git-author-email: 'fm18lv@gmail.com'
         git-committer-name: 'little fmway'
