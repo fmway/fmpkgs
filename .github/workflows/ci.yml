@@ -17,7 +17,7 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        extra-conf: nix-command flakes auto-allocate-uids configurable-impure-env
+        extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - uses: cachix/cachix-action@master
       with:
@@ -40,7 +40,7 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        extra-conf: nix-command flakes auto-allocate-uids configurable-impure-env
+        extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - uses: cachix/cachix-action@master
       with:
@@ -66,7 +66,7 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        extra-conf: nix-command flakes auto-allocate-uids configurable-impure-env
+        extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/update-flake-lock@v24
       name: Update flake.lock
       with:
