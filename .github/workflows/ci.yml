@@ -1,9 +1,9 @@
 name: "CI"
 on:
   pull_request:
-    branch: [master]
+    branches: [master]
   push:
-    branch: [master]
+    branches: [master]
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 2,5' # every Tuesday & Friday
@@ -120,12 +120,12 @@ jobs:
           dependencies
           automated
   auto-merge:
-    needs: [xdman, rust-cli] # After the E2E and build jobs, if one of them fails, it won't merge the PR.
+    needs: [xdman, rust-cli]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request'}} # Detect that the PR author is dependabot
+    if: ${{ github.event_name == 'pull_request'}}
     steps:
       - name: Enable auto-merge
-        run: gh pr merge --auto --merge "$PR_URL" # Use Github CLI to merge automatically the PR
+        run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
