@@ -19,6 +19,8 @@ jobs:
         github-token: ${{ secrets.GH_TOKEN }}
         extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/magic-nix-cache-action@main
+      with:
+        use-flakehub: false
     - uses: cachix/cachix-action@master
       with:
         name: fmcachix
@@ -43,6 +45,8 @@ jobs:
         github-token: ${{ secrets.GH_TOKEN }}
         extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     - uses: DeterminateSystems/magic-nix-cache-action@main
+      with:
+        use-flakehub: false
     - uses: cachix/cachix-action@master
       with:
         name: fmcachix
@@ -82,3 +86,13 @@ jobs:
         pr-labels: |
           dependencies
           automated
+  auto-merge:
+    needs: [xdman, rust-cli] # After the E2E and build jobs, if one of them fails, it won't merge the PR.
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request'}} # Detect that the PR author is dependabot
+    steps:
+      - name: Enable auto-merge
+        run: gh pr merge --auto --merge "$PR_URL" # Use Github CLI to merge automatically the PR
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
