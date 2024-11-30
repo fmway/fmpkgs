@@ -86,8 +86,16 @@ jobs:
     - name: update addons
       run: nix run .#firefoxAddonsUpdater
     - name: Commit
+      env:
+        GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
       run: |
-        git add -A && git commit -m "chore(firefox-addons): update some addons" && git push || echo "Nothing..."
+        git add -A && \
+        git commit -m "chore(firefox-addons): update some addons" && \
+        git checkout -B firefox-addons && \
+        git push origin firefox-addons && \
+        [ -n "$(git diff origin/firefox-addons origin/master)" ] && \
+        gh pr create --title "chore(firefox-addons): update some addons" --body "" || \
+        echo "Nothing..."
   lockfile:
     runs-on: [ubuntu-latest]
     if: ${{ github.event_name != 'pull_request' && github.ref_name != 'nightly-update' && (github.event.head_commit.author.name == 'fmway' || (github.event_name == 'schedule' && github.event.schedule == '0 0 * * 2,5') || github.event_name == 'workflow_dispatch') }}
