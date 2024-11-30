@@ -7,6 +7,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 2,5' # every Tuesday & Friday
+    - cron: '0 12 * * *' # every day at 12.00
 permissions: write-all
 jobs:
   rust-cli:
@@ -63,9 +64,33 @@ jobs:
         git add -A && git commit -m "chore(xdman): update deps xdman" && git push || echo "Nothing..."
     - run: nix build .#xdman --verbose
     - run: nix-collect-garbage -d
+  firefox-addons:
+    runs-on: [ubuntu-latest]
+    if: ${{ github.event_name != 'pull_request' && github.ref_name != 'nightly-update' && (github.event.head_commit.author.name == 'fmway' || (github.event_name == 'schedule' && github.event.schedule == '0 12 * * *') || github.event_name == 'workflow_dispatch') }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Setup git
+      run: |
+        git config --global user.name 'Bot'
+        git config --global user.email 'fm18lv@gmail.com'
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - uses: DeterminateSystems/nix-installer-action@main
+      with:
+        github-token: ${{ secrets.GH_TOKEN }}
+        extra-conf: experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+      with:
+        use-flakehub: false
+    - name: update addons
+      run: nix run .#firefoxAddonsUpdater
+    - name: Commit
+      run: |
+        git add -A && git commit -m "chore(firefox-addons): update some addons" && git push || echo "Nothing..."
   lockfile:
     runs-on: [ubuntu-latest]
-    if: ${{ github.event_name != 'pull_request' && github.ref_name != 'nightly-update' && (github.event.head_commit.author.name == 'fmway' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+    if: ${{ github.event_name != 'pull_request' && github.ref_name != 'nightly-update' && (github.event.head_commit.author.name == 'fmway' || (github.event_name == 'schedule' && github.event.schedule == '0 0 * * 2,5') || github.event_name == 'workflow_dispatch') }}
     steps:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
