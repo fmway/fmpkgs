@@ -106,7 +106,7 @@ jobs:
           fi
         fi
     - name: Pull Request
-      if: !steps.check.outputs.skip
+      if: '!steps.check.outputs.skip'
       env:
         GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
       run: |
