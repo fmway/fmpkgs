@@ -110,6 +110,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
       run: |
+        git checkout firefox-addons
         gh pr create --title "chore(firefox-addons): update some addons" --body "" -l "automated" -l "dependencies"
   lockfile:
     runs-on: [ubuntu-latest]
