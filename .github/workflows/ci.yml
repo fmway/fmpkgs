@@ -34,8 +34,6 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.head_ref }}
     - name: Setup git
       run: |
         git config --global user.name 'xdman_bot'
