@@ -102,6 +102,8 @@ jobs:
           if [ -z "$(git diff origin/firefox-addons origin/master)" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
+        else
+          echo "skip=true" >> "$GITHUB_OUTPUT"
         fi
     - name: Pull Request
       if: '!steps.check.outputs.skip'
