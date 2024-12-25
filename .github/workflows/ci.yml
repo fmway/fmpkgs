@@ -137,7 +137,7 @@ jobs:
   auto-merge:
     needs: [xdman, rust-cli]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request'}}
+    if: ${{ always() && github.event_name == 'pull_request'}}
     steps:
       - name: Enable auto-merge
         run: gh pr merge --auto --merge "$PR_URL"
