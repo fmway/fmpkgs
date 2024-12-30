@@ -6,8 +6,8 @@ on:
     branches: [master]
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 2,5' # every Tuesday & Friday
-    - cron: '0 12 * * *' # every day at 12.00
+    - cron: '0 0,6,12,18 * * *'
+    - cron: '0 12 * * *'
 permissions: write-all
 jobs:
   rust-cli:
@@ -113,7 +113,7 @@ jobs:
         gh pr create --title "chore(firefox-addons): update some addons" --body "" -l "automated" -l "dependencies" --head firefox-addons --base master
   lockfile:
     runs-on: [ubuntu-latest]
-    if: ${{ github.event_name != 'pull_request' && github.ref_name != 'nightly-update' && (github.event.head_commit.author.name == 'fmway' || (github.event_name == 'schedule' && github.event.schedule == '0 0 * * 2,5') || github.event_name == 'workflow_dispatch') }}
+    if: ${{ github.event_name != 'pull_request' && github.ref_name != 'nightly-update' && (github.event.head_commit.author.name == 'fmway' || (github.event_name == 'schedule' && github.event.schedule == '0 0,6,12,18 * * *') || github.event_name == 'workflow_dispatch') }}
     steps:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
