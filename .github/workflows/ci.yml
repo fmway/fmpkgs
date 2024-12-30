@@ -89,7 +89,7 @@ jobs:
         use-flakehub: false
     - name: Update scripts
       run: |
-        nix-shell -p nix --run (nix eval .#bluetui.passthru.updateScript)
+        nix-shell -p nix --run $(nix eval .#bluetui.passthru.updateScript)
     - name: Check Updates
       id: check
       env:
