@@ -7,6 +7,7 @@ in {
   bluetui = (callPackage ./bluetui {}).overrideAttrs {
     passthru.updateScript = ./bluetui/update.fish;
   };
+  pkgx = callPackage ./pkgx {};
   firefox-addons = import ./firefox-addons { inherit pkgs lib; };
   firefoxAddonsUpdater = callPackage ./firefox-addons/firefoxAddonsUpdater.nix {};
   mpv-scripts = let
