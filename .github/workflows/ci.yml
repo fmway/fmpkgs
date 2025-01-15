@@ -26,7 +26,7 @@ jobs:
       with:
         name: fmcachix
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#bluetui
+    - run: nix build .#bluetui .#pkgx
     - run: nix-collect-garbage -d
   xdman:
     if: "${{ github.event_name == 'pull_request' && github.event.head_commit.author.name != 'xdman_bot' }}"
