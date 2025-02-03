@@ -12,7 +12,7 @@ permissions: write-all
 env:
   nix-conf: |
     experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
-    subtituters = https://cache.nixos.org https://fmcachix.cachix.org
+    substituters = https://cache.nixos.org https://fmcachix.cachix.org
     trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= fmcachix.cachix.org-1:Z5j9jk83ctoCK22EWrbQL6AAP3CTYnZ/PHljlYSakrw=
   setup-git: |
     git config --global user.name 'xdman_bot'
