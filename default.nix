@@ -9,6 +9,7 @@ in {
   };
   firefox-addons = import ./firefox-addons { inherit pkgs lib; };
   firefoxAddonsUpdater = callPackage ./firefox-addons/firefoxAddonsUpdater.nix {};
+  ktechlab = callPackage ./ktechlab {};
   mpv-scripts = let
     buildLua = import ./mpv-scripts/buildLua.nix { inherit pkgs lib; };
   in {
