@@ -45,10 +45,10 @@ in {
   };
  stayfree = buildFirefoxXpiAddon {
     pname = "stayfree";
-    version = "1.42.4";
+    version = "2.0.9";
     addonId = "{30b15d56-b2fa-4cb2-98fd-7b5e26306483}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4358939/stayfree-1.42.4.xpi";
-    sha256 = "aebbccc0ace8b87ed1d99c5e9b63fadb72edf0487c47270d4df6f017bb3d8077";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4446864/stayfree-2.0.9.xpi";
+    sha256 = "b859a2cc1d203cb9b830d98ccff44d72a10fb3be8f1d04622cb6c0e5c5a12be8";
     meta = {
       homepage = "https://stayfreeapps.com/";
       mozPermissions = [
@@ -69,7 +69,6 @@ in {
         "*://*.tiktok.com/*"
         "*://*.x.com/*"
         "*://*.youtube.com/*"
-        "https://stayfreeapps.com/extension-get-started"
       ];
       # todo
       licenses = with lib.licenses; [];
