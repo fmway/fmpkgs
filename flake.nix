@@ -13,7 +13,8 @@
     packages = import ./. {
       inherit pkgs lib;
     };
-  }) // {
+  }) // rec {
+    nixConfig = nixpkgs.config;
     nixpkgs.config = {
       permittedInsecurePackages = [
         "dotnet-runtime-wrapped-6.0.36"

@@ -2,7 +2,7 @@
 , fetchFromGitHub
 , buildDotnetModule
 , gtk3
-, ffmpeg
+, ffmpeg-full
 , dotnetCorePackages
 , ... }:
 buildDotnetModule rec {
@@ -23,7 +23,7 @@ buildDotnetModule rec {
   
   runtimeDeps = [
     gtk3
-    ffmpeg
+    ffmpeg-full
   ];
 
   nugetDeps = ./deps.nix;
