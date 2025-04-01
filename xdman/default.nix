@@ -2,14 +2,12 @@
 , stdenv
 , coreutils
 , binutils
-, callPackage
 , makeDesktopItem
 , copyDesktopItems
 , wrapGAppsHook
-}: let
-  # xdm-app = callPackage ./xdm-app { };
-  xdm-gtk = callPackage ./xdm-gtk { };
-in stdenv.mkDerivation rec {
+, xdm-gtk
+# , xdm-app
+, ... }: stdenv.mkDerivation rec {
   pname = "xdman";
   version = "8.0.29";
   inherit (xdm-gtk) passthru;
