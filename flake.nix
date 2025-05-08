@@ -4,25 +4,39 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = { self, nixpkgs, flake-utils, ... } @ inputs: 
-  flake-utils.lib.eachDefaultSystem (system: let
+  outputs = { self, nixpkgs, flake-utils, ... } @ inputs: let
+    module.imports = [
+      {
+        nixpkgs.overlays = [ self.overlays.default ];
+        nixpkgs.config.permittedInsecurePackages = [
+          "dotnet-runtime-wrapped-6.0.36"
+          "dotnet-runtime-6.0.36"
+          "dotnet-sdk-wrapped-6.0.428"
+          "dotnet-sdk-6.0.428"
+        ];
+      }
+    ]; 
+  in flake-utils.lib.eachDefaultSystem (system: let
     pkgs = nixpkgs.legacyPackages.${system};
     lib = nixpkgs.lib;
-    
   in {
     packages = import ./. {
       inherit pkgs lib;
     };
-  }) // rec {
-    nixConfig = nixpkgs.config;
-    nixpkgs.config = {
-      permittedInsecurePackages = [
-        "dotnet-runtime-wrapped-6.0.36"
-        "dotnet-runtime-6.0.36"
-        "dotnet-sdk-wrapped-6.0.428"
-        "dotnet-sdk-6.0.428"
-      ];
+  }) // {
+    overlays.default = self: super: {
+      fmpkgs = inputs.self.packages.${self.system};
     };
-    overlays.default = import ./overlay.nix;
+    nixosModules.default = module;
+    homeManagerModules.default = module;
+    nixDarwinModules.default = module;
+  };
+  nixConfig = {
+    permittedInsecurePackages = [
+      "dotnet-runtime-wrapped-6.0.36"
+      "dotnet-runtime-6.0.36"
+      "dotnet-sdk-wrapped-6.0.428"
+      "dotnet-sdk-6.0.428"
+    ];
   };
 }
