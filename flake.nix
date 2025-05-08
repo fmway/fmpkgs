@@ -8,16 +8,19 @@
     module.imports = [
       {
         nixpkgs.overlays = [ self.overlays.default ];
-        nixpkgs.config.permittedInsecurePackages = [
-          "dotnet-runtime-wrapped-6.0.36"
-          "dotnet-runtime-6.0.36"
-          "dotnet-sdk-wrapped-6.0.428"
-          "dotnet-sdk-6.0.428"
-        ];
+        nixpkgs = { inherit config; };
       }
     ]; 
+    config.permittedInsecurePackages = [
+      "dotnet-runtime-wrapped-6.0.36"
+      "dotnet-runtime-6.0.36"
+      "dotnet-sdk-wrapped-6.0.428"
+      "dotnet-sdk-6.0.428"
+    ];
   in flake-utils.lib.eachDefaultSystem (system: let
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system config;
+    };
     lib = nixpkgs.lib;
   in {
     packages = import ./. {
