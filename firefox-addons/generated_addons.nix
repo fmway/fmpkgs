@@ -24,10 +24,10 @@ in {
   };
  wakatime = buildFirefoxXpiAddon {
     pname = "wakatimes";
-    version = "4.0.12";
+    version = "4.1.0";
     addonId = "addons@wakatime.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4400334/wakatimes-4.0.12.xpi";
-    sha256 = "252b697dd46c5ef95a9f96e40465fb1cb64bf2a4f2737ab1317ba39b8ee2d959";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4491651/wakatimes-4.1.0.xpi";
+    sha256 = "8bcbe94e36612a1cd2cfcce25e941aa20f4ea75382f8663474d1efc9f75a18e9";
     meta = {
       homepage = "https://wakatime.com";
       mozPermissions = [
@@ -35,6 +35,8 @@ in {
         "tabs"
         "storage"
         "activeTab"
+        "https://api.wakatime.com/*"
+        "https://wakatime.com/*"
         "devtools"
         "<all_urls>"
       ];
