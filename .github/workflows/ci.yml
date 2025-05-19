@@ -187,7 +187,7 @@ jobs:
       with:
         github-token: ${{ secrets.GH_TOKEN }}
         extra-conf: ${{ env.nix-conf }}
-    - uses: DeterminateSystems/update-flake-lock@v24
+    - uses: DeterminateSystems/update-flake-lock@v25
       name: Update flake.lock
       with:
         branch: nightly-update
