@@ -4,9 +4,6 @@
 }: let
   inherit (pkgs) callPackage;
 in {
-  bluetui = (callPackage ./bluetui {}).overrideAttrs {
-    passthru.updateScript = ./bluetui/update.fish;
-  };
   firefox-addons = import ./firefox-addons { inherit pkgs lib; };
   firefoxAddonsUpdater = callPackage ./firefox-addons/firefoxAddonsUpdater.nix {};
   ktechlab = callPackage ./ktechlab {};
