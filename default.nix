@@ -18,4 +18,5 @@ in {
     xdm-gtk = callPackage ./xdman/xdm-gtk {};
     xdm-app = callPackage ./xdman/xdm-app {};
   };
+  voiden = callPackage ./voiden {};
 }
