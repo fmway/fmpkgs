@@ -1,7 +1,7 @@
 { pkgs, lib, ... }: let
   buildFirefoxXpiAddon = import ./buildFirefoxXpiAddon.nix { inherit pkgs lib; };
 in {
- what-font = buildFirefoxXpiAddon {
+  what-font = buildFirefoxXpiAddon {
     pname = "zjm-whatfont";
     version = "1.3";
     addonId = "{dcb8caa2-63fa-41aa-a508-a45c5990ebdd}";
@@ -22,7 +22,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- wakatime = buildFirefoxXpiAddon {
+  wakatime = buildFirefoxXpiAddon {
     pname = "wakatimes";
     version = "4.1.0";
     addonId = "addons@wakatime.com";
@@ -45,7 +45,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- stayfree = buildFirefoxXpiAddon {
+  stayfree = buildFirefoxXpiAddon {
     pname = "stayfree";
     version = "2.2.8";
     addonId = "{30b15d56-b2fa-4cb2-98fd-7b5e26306483}";
@@ -78,7 +78,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- firefox-relay = buildFirefoxXpiAddon {
+  firefox-relay = buildFirefoxXpiAddon {
     pname = "firefox-relay";
     version = "2.8.1";
     addonId = "private-relay@firefox.com";
@@ -101,7 +101,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- preact-devtools = buildFirefoxXpiAddon {
+  preact-devtools = buildFirefoxXpiAddon {
     pname = "preact-devtools";
     version = "6.6.3";
     addonId = "{5caff8cc-3d2e-4110-a88a-003cc85b3858}";
@@ -119,7 +119,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- allow-right-click = buildFirefoxXpiAddon {
+  allow-right-click = buildFirefoxXpiAddon {
     pname = "allow-right-click";
     version = "0.6.3";
     addonId = "{278b0ae0-da9d-4cc6-be81-5aa7f3202672}";
@@ -139,7 +139,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- firefoxpwa = buildFirefoxXpiAddon {
+  firefoxpwa = buildFirefoxXpiAddon {
     pname = "firefoxpwa";
     version = "2.14.1";
     addonId = "firefoxpwa@filips.si";
@@ -159,7 +159,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- xdm = buildFirefoxXpiAddon {
+  xdm = buildFirefoxXpiAddon {
     pname = "xdm-integration-module";
     version = "1.3";
     addonId = "xdm-integration-module@subhra74.github.io";
@@ -180,7 +180,7 @@ in {
       platforms = lib.platforms.all;
     };
   };
- xdm_v8 = buildFirefoxXpiAddon {
+  xdm_v8 = buildFirefoxXpiAddon {
     pname = "xdm-browser-monitor-v8";
     version = "3.4";
     addonId = "xdm-v8-browser-helper@subhra74.github.io";
