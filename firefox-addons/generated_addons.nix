@@ -103,15 +103,14 @@ in {
   };
   preact-devtools = buildFirefoxXpiAddon {
     pname = "preact-devtools";
-    version = "6.6.3";
+    version = "7.7.7";
     addonId = "{5caff8cc-3d2e-4110-a88a-003cc85b3858}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4297952/vue_js_devtools-6.6.3.xpi";
-    sha256 = "74f9d39a1dff61ce952cf34e747f1bca466c163b04727768010da3f8307fa6b7";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4508409/vue_js_devtools-7.7.7.xpi";
+    sha256 = "5672cd0d3298fa57f2f51e4644011e4152e6e291f6f338601495dd8037331169";
     meta = {
       homepage = "https://devtools.vuejs.org";
       mozPermissions = [
         "<all_urls>"
-        "storage"
         "devtools"
       ];
       # todo
