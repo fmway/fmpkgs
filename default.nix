@@ -14,6 +14,7 @@ in {
     menu = callPackage ./mpv-scripts/menu.nix { inherit buildLua; };
     bookmarker = callPackage ./mpv-scripts/bookmarker.nix { inherit buildLua; };
   };
+  cage-xtmapper = callPackage ./cage-xtmapper {};
   xdman = callPackage ./xdman {
     xdm-gtk = callPackage ./xdman/xdm-gtk {};
     xdm-app = callPackage ./xdman/xdm-app {};
