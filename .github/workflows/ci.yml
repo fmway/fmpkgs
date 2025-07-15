@@ -65,7 +65,7 @@ jobs:
     - env:
         NIXPKGS_ALLOW_INSECURE: 1
       run: |
-        ./result /home/runner/work/fmpkgs/fmpkgs/xdman/xdm-gtk/deps.nix
+        ./result /home/runner/work/pkgs/pkgs/pkgs/by-name/xd/xdman/deps.nix
         unlink result
     - name: Commit
       run: |
@@ -88,7 +88,7 @@ jobs:
         github-token: ${{ secrets.GH_TOKEN }}
         extra-conf: ${{ env.nix-conf }}
     - name: update addons
-      run: nix run .#firefoxAddonsUpdater
+      run: nix run .#updater.firefox-addons
     - name: Check Updates
       id: check
       env:
