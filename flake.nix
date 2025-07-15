@@ -25,7 +25,8 @@
       };
     in import ./pkgs/top-level { inherit pkgs; });
     overlays.default = self: super: {
-      fmpkgs = inputs.self.packages.${self.system};
+      fmpkgs = nixpkgs.lib.warn "Use pkgs.fmway insteads" self.fmway;
+      fmway = inputs.self.packages.${self.system};
     };
     nixosModules.default = module;
     homeManagerModules.default = module;
