@@ -1,4 +1,4 @@
-set addons_raw "$(cat ./firefox-addons/addons.json)"
+set addons_raw "$(cat ./pkgs/applications/browser/firefox/addons/addons.json)"
 set result "{ pkgs, lib, ... }: let
   buildFirefoxXpiAddon = import ./buildFirefoxXpiAddon.nix { inherit pkgs lib; };
 in {"
@@ -27,4 +27,4 @@ for i in (seq 0 (math (echo "$addons_raw" | jq '. | length') - 1))
   set -a result "  };"
 end
 set   -a result "}"
-for i in $result; echo "$i"; end > ./firefox-addons/generated_addons.nix
+for i in $result; echo "$i"; end > ./pkgs/applications/browser/firefox/addons/generated_addons.nix
