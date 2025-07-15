@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, lib ? pkgs.lib, ... }:
 
 let
   # Escape strings for embedding in shell scripts
