@@ -1,5 +1,5 @@
 final: prev: {
-  fmpkgs = import ./. {
+  fmpkgs = import ./pkgs/top-level {
     pkgs = prev;
   };
 }
