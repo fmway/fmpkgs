@@ -30,7 +30,6 @@
     };
     nixosModules.default = module;
     homeManagerModules.default = module;
-    nixDarwinModules.default = module;
   };
   nixConfig = {
     permittedInsecurePackages = [
