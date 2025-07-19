@@ -145,13 +145,12 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
       run: |
         gh pr create --title "chore(lockfile): Update flake.lock" --body "" -l "automated" -l "dependencies" --head nightly-update --base master || echo create pr failed successfully
-  auto-merge:
+  auto-rebase:
     needs: [xdman]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request'}}
     steps:
-      - name: Enable auto-merge
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Automatic Rebase
+      uses: cirrus-actions/rebase@1.8
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
